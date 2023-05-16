@@ -33,9 +33,6 @@ export default function Navbar({userData,logOut}) {
           <li className="nav-item">
             <Link className="nav-link" to="Categories">Categories</Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="Brands">Brands</Link>
-          </li>
 
     
         </ul>:null}
@@ -43,15 +40,13 @@ export default function Navbar({userData,logOut}) {
       
 
         <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
-        <li className="nav-item d-flex align-items-center">
-          <i className='fab mx-2 fa-facebook' ></i>
-          <i className='fab mx-2 fa-twitter' ></i>
-          <i className='fab mx-2 fa-instagram' ></i>
-          <i className='fab mx-2 fa-tiktok' ></i>
-          <i className='fab mx-2 fa-linkedin' ></i>
-          <i className='fab mx-2 fa-youtube' ></i>
-
-          </li>
+        <li className="nav-item d-flex align-items-center m-1">
+        <a href='https://www.facebook.com/profile.php?id=100003799342442'><i className='fab mx-2 fa-facebook' ></i></a>   
+          <a href='https://www.instagram.com/abdelrahman_elsayed123/'><i className='fab mx-2 fa-instagram' ></i></a>   
+          <a href='https://www.linkedin.com/in/abdelrahman-elsayed-828736234/'><i className='fab mx-2 fa-linkedin' ></i></a>   
+      <a href='https://github.com/Abdelrahman0122'><i className='fab mx-2 fa-github' ></i></a>    
+        
+      </li>
         
          {userData ==null ?   <>
         <li className="nav-item">
