@@ -49,9 +49,34 @@ export function CartContextProvider(props) {
       }).then((response)=>response)
         .catch((error)=>error);    
   }
+  // Clear the cart
+  function clearCart(x) {
+    return axios.delete(
+      `https://ecommerce.routemisr.com/api/v1/cart`,
+      {
+        headers: headers
+      }).then((response)=>response)
+        .catch((error)=>error);
+  }
+
+  //Online payment
+  function onlinePayment(cartId, shippingAddress) {
+    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`,
+    {
+      //fe eldatabase fe count hwa heb3at fe el count
+      shippingAddress:shippingAddress
+    },
+      {
+        headers: headers
+         
+      }).then((response)=>response)
+        .catch((error)=>error);    
+  }
+
+
   return (
     // bn5leha globle 3l project kolo
-    <cartContext.Provider value={{addToCart, getLoggedUserCart, removeItem, updateProductCount}}>
+    <cartContext.Provider value={{onlinePayment, addToCart, getLoggedUserCart, removeItem, updateProductCount, clearCart}}>
       {props.children}
       </cartContext.Provider>
   );

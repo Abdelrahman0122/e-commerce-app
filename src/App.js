@@ -18,9 +18,11 @@ import {
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
+
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { CartContextProvider } from "./Context/CartContext";
+import Checkout from "./Components/checkout/checkout";
 
 
 function App() {
@@ -62,6 +64,14 @@ function App() {
           element: (
             <ProtectedRoute>
               <ProductDetails/>
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "checkout",
+          element: (
+            <ProtectedRoute>
+              <Checkout/>
             </ProtectedRoute>
           ),
         },
