@@ -1,8 +1,30 @@
 import axios from "axios";
-import { createContext } from "react"; 
+import { useState } from "react";
+import { createContext, useEffect } from "react"; 
 export let cartContext = createContext();
 
 export function CartContextProvider(props) {
+
+  const [cartId, setcartId] = useState(null);
+  const [numOfCartItems, setnumOfCartItems] = useState(0)
+
+
+async function getCart()
+{
+   let response = await getLoggedUserCart();
+     if(response?.data?.status === 'success')
+     {
+      setnumOfCartItems(response.data.numOfCartItems);
+      setcartId(response.data.data._id);
+     }
+   console.log(response);
+}
+
+useEffect(()=>{
+  getCart();
+}, []);
+
+
   let headers = { token: localStorage.getItem("userToken") };
 
   // add to cart method {Post}
@@ -76,7 +98,7 @@ export function CartContextProvider(props) {
 
   return (
     // bn5leha globle 3l project kolo
-    <cartContext.Provider value={{onlinePayment, addToCart, getLoggedUserCart, removeItem, updateProductCount, clearCart}}>
+    <cartContext.Provider value={{cartId,numOfCartItems,setnumOfCartItems, onlinePayment, addToCart, getLoggedUserCart, removeItem, updateProductCount, clearCart}}>
       {props.children}
       </cartContext.Provider>
   );

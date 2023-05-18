@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './Navbar.module.css'
 import logo from '../../assets/images/freshcart-logo.svg'
 import {Link} from 'react-router-dom';
+import { cartContext } from '../../Context/CartContext';
+
+
 
 export default function Navbar({userData,logOut}) {
+
+  // hwa fe 7agat kteer fe el cart context fa ana b5tar ely 3ayezo maben el {}
+let {numOfCartItems} = useContext(cartContext);
+
   return <>
     
-   <nav className="navbar navbar-expand-sm navbar-light bg-light">
+   <nav className="navbar fixed-top navbar-expand-sm navbar-light bg-light">
       <div className="container">
       <Link className="navbar-brand" to="/">
         <img src={logo} alt="" />
@@ -24,9 +31,7 @@ export default function Navbar({userData,logOut}) {
         <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="Cart">Cart</Link>
-          </li>
+          
           <li className="nav-item">
             <Link className="nav-link" to="Products">Products</Link>
           </li>
@@ -55,9 +60,14 @@ export default function Navbar({userData,logOut}) {
           <li className="nav-item">
             <Link className="nav-link" to="Register">Register</Link>
           </li>
-          </> :<li className="nav-item">
+          </> :<><li className="nav-item position-relative">
+            <Link className="nav-link" to="Cart">
+              <i className='fas fa-shopping-cart fa-lg'></i>
+            <span className='badge position-absolute top-0 end-0 bg-main text-white'>{numOfCartItems}</span>
+            </Link>
+          </li><li className="nav-item">
             <span className="nav-link cursor-pointer" onClick={logOut} >Logout</span>
-          </li>}
+          </li></>}
        
           
 

@@ -14,11 +14,13 @@ let naigate = useNavigate();
 
   return <>
     
+<div className='pt-5'>
 <Navbar userData={userData} logOut={logOut}/>
 <div className="container">
 <Outlet></Outlet>
 </div>
 <Footer/>
+</div>
     
     </>
   
