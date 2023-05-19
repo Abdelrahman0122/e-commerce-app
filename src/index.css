@@ -60,3 +60,14 @@ a , a:hover{
 {
     background-color: var(--light-color) !important;
 }
+.network
+{
+    background-color: #fff;
+    padding:10px ;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10000;
+    box-shadow: var(--shadow);
+    
+}

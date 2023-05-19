@@ -23,6 +23,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { CartContextProvider } from "./Context/CartContext";
 import Checkout from "./Components/checkout/checkout";
+import { Offline, Online } from "react-detect-offline";
 
 
 function App() {
@@ -106,6 +107,7 @@ function App() {
     },
   ]);
   return (   <CartContextProvider>
+    <Offline> <div className="network">You are offline</div> </Offline>
     <Toaster/>
        <RouterProvider router={routers}></RouterProvider>
               </CartContextProvider>
