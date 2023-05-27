@@ -23,7 +23,6 @@ export default function FeaturedProducts() {
   }
 
 
-
   const [products, setProducts] = useState([]);
   async function getProducts() {
     let { data } = await axios.get(
