@@ -52,7 +52,7 @@ function App() {
       element: <Layout setUserData={setUserData} userData={userData} />,
       children: [
         { index: true, element: <Home /> },
-        { path: "e-commerce-app", element: <Home /> },
+        { path: "e-commerce-app", element: <Navigate to="/" /> },
         {
           path: "products",
           element: (
