@@ -10,7 +10,6 @@ import Categories from "./Components/Categories/Categories";
 import NotFound from "./Components/NotFound/NotFound";
 import toast, { Toaster } from "react-hot-toast";
 import {
-  BrowserRouter,
   createBrowserRouter,
   Navigate,
   RouterProvider,
@@ -50,7 +49,7 @@ function App() {
       element: <Layout setUserData={setUserData} userData={userData} />,
       children: [
         { index: true, element: <Home /> },
-        { path: "e-commerce-app", element: <Navigate to="/" /> },
+        { path: "/e-commerce-app/", element: <Navigate to="/" /> },
         {
           path: "products",
           element: (
@@ -107,12 +106,12 @@ function App() {
   ]);
   return (
     <CartContextProvider>
-    <Offline> <div className="network">You are offline</div> </Offline>
-    <Toaster/>
-    <BrowserRouter basename="/e-commerce-app">
+      <Offline>
+        <div className="network">You are offline</div>{" "}
+      </Offline>
+      <Toaster />
       <RouterProvider router={routers}></RouterProvider>
-    </BrowserRouter>
-  </CartContextProvider>
+    </CartContextProvider>
   );
 }
 
