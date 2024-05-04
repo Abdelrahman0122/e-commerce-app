@@ -1,4 +1,3 @@
- 
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Components/Home/Home";
@@ -9,8 +8,9 @@ import Login from "./Components/Login/Login";
 import About from "./Components/About/About";
 import Categories from "./Components/Categories/Categories";
 import NotFound from "./Components/NotFound/NotFound";
-import  toast,{Toaster}  from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import {
+  BrowserRouter,
   createBrowserRouter,
   Navigate,
   RouterProvider,
@@ -24,7 +24,6 @@ import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import { CartContextProvider } from "./Context/CartContext";
 import Checkout from "./Components/checkout/checkout";
 import { Offline, Online } from "react-detect-offline";
-
 
 function App() {
   //when refresh still in the pag not to logout again
@@ -40,9 +39,8 @@ function App() {
   function saveUserData() {
     let encodedToken = localStorage.getItem("userToken");
     let decodedToken = jwtDecode(encodedToken);
-    
+
     setUserData(decodedToken);
-    
   }
 
   // end of the problem     el user data m4 2rea el decodedToken
@@ -56,16 +54,16 @@ function App() {
         {
           path: "products",
           element: (
-          <ProtectedRoute>
+            <ProtectedRoute>
               <Products />
-           </ProtectedRoute>
+            </ProtectedRoute>
           ),
         },
         {
           path: "product-details/:id",
           element: (
             <ProtectedRoute>
-              <ProductDetails/>
+              <ProductDetails />
             </ProtectedRoute>
           ),
         },
@@ -73,7 +71,7 @@ function App() {
           path: "checkout",
           element: (
             <ProtectedRoute>
-              <Checkout/>
+              <Checkout />
             </ProtectedRoute>
           ),
         },
@@ -98,7 +96,7 @@ function App() {
         {
           path: "categories",
           element: (
-          <ProtectedRoute>
+            <ProtectedRoute>
               <Categories />
             </ProtectedRoute>
           ),
@@ -107,13 +105,14 @@ function App() {
       ],
     },
   ]);
-  return (   <CartContextProvider>
+  return (
+    <CartContextProvider>
     <Offline> <div className="network">You are offline</div> </Offline>
     <Toaster/>
-       <RouterProvider router={routers}></RouterProvider>
-              </CartContextProvider>
-     
-   
+    <BrowserRouter basename="/e-commerce-app">
+      <RouterProvider router={routers}></RouterProvider>
+    </BrowserRouter>
+  </CartContextProvider>
   );
 }
 
